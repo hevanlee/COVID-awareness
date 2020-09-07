@@ -1,0 +1,19 @@
+{
+  "name": "covid-awareness",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hevanlee/COVID-awareness.git"
+  },
+  "author": "J.D, E.L, K.T",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hevanlee/COVID-awareness/issues"
+  },
+  "homepage": "https://github.com/hevanlee/COVID-awareness#readme"
+}
