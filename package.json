@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/hevanlee/COVID-awareness/issues"
   },
-  "homepage": "https://github.com/hevanlee/COVID-awareness#readme"
+  "homepage": "https://github.com/hevanlee/COVID-awareness#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
