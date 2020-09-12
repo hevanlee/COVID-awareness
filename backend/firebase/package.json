@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hevanlee/COVID-awareness#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "firebase-admin": "^9.1.1"
   }
 }
