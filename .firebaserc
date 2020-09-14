@@ -1,5 +1,6 @@
 {
   "projects": {
-    "masketeer": "covidkids-54d46"
+    "masketeer": "covidkids-54d46",
+    "default": "covidkids-54d46"
   }
 }
