@@ -67,5 +67,5 @@ class HotspotScraper(scrapy.Spider):
             else:
                 continue
 
-        with open("hotspots.json", 'w') as outfile:
+        with open("backend/info_corner/scraper/hotspots.json", 'w') as outfile:
             json.dump(hotspots, outfile, ensure_ascii = False)
