@@ -1,28 +1,36 @@
 # Scraper to find hotspots in NSW
 # Run with "scrapy runspider scraper.py"
+
+# hotspots.json format:
+# {"New South Wales": 
+#   [
+#     {
+#       "suburb": "Albury", 
+#       "start_date": "8 August 2020", 
+#       "start_time": "1.00 am"
+#     }
+#   ]
+# }
+
 import scrapy
-
-hotspots = {
-    "New South Wales": [],
-    "Victoria": [],
-    "Australian Capital Territory": [],
-    "South Australia": [],
-    "Western Australia": [],
-    "Northern Territory": [],
-    "Tasmania": []
-}
-
-class Hotspot:
-    def __init__(self, suburb, start_date, start_time):
-        self.suburb = suburb
-        self.start_date = start_date
-        self.start_time = start_time
+import json
 
 class HotspotScraper(scrapy.Spider):
     name = "hotspot_spider"
     start_urls = ['https://www.qld.gov.au/health/conditions/health-alerts/coronavirus-covid-19/current-status/hotspots-covid-19']
 
     def parse(self, response):
+        
+        hotspots = {
+            "New South Wales": [],
+            "Victoria": [],
+            "Australian Capital Territory": [],
+            "South Australia": [],
+            "Western Australia": [],
+            "Northern Territory": [],
+            "Tasmania": []
+        }
+
         table = response.xpath('//table[@id="table20116"]//tbody')
         rows = table.xpath('//tr')[2:]
 
@@ -39,10 +47,16 @@ class HotspotScraper(scrapy.Spider):
                     continue    
                 
                 if end_date == 'Current':
-                    suburb = row.xpath('td//text()')[0].extract().strip()
-                    start_time = row.xpath('td//text()')[1].extract().strip()
-                    start_date = row.xpath('td//text()')[2].extract().strip()
-                    hotspots[state_key].append(Hotspot(suburb, start_date, start_time))
+                    hotspot = {
+                        "suburb" : [],
+                        "start_date": [],
+                        "start_time": []
+                    }
+
+                    hotspot["suburb"] = row.xpath('td//text()')[0].extract().strip()
+                    hotspot["start_time"] = row.xpath('td//text()')[1].extract().strip()
+                    hotspot["start_date"] = row.xpath('td//text()')[2].extract().strip()
+                    hotspots[state_key].append(hotspot)
 
             elif row.xpath('th//strong'):
                 state_string = row.xpath('th//strong//text()')[0].extract()
@@ -53,9 +67,5 @@ class HotspotScraper(scrapy.Spider):
             else:
                 continue
 
-        print("Hotspots:")
-        for state in hotspots.keys():
-            if hotspots[state] != []:
-                print(state + ":")
-                for hotspot in hotspots[state]:
-                    print(hotspot.suburb, "since", hotspot.start_date, "at", hotspot.start_time)                             
+        with open("hotspots.json", 'w') as outfile:
+            json.dump(hotspots, outfile, ensure_ascii = False)
