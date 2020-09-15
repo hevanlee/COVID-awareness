@@ -20,6 +20,14 @@
       {
         "source": "/hello",
         "destination": "/hello.html"
+      },
+      {
+        "source": "/route",
+        "destination": "/routes/r.ejs"
+      },
+      {
+        "source": "/hotspot",
+        "destination": "/routes/hotspots_copy.json"
       }
     ]
   }

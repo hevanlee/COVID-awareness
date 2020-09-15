@@ -1,21 +1,26 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+
+admin.initializeApp();
+
 const express = require('express');
 const app = express();
 //const cors = require('cors');
 //app.use(cors({origin: true}));
 
-admin.initializeApp();
-
 const db = admin.firestore();
 
-app.get("/hello", (request, response) => {
-    response.send("Hello world!");
-}); 
 
-/* exports.hello= functions.https.onRequest((req, res) => {
-    response.send("Hello from Medium!");
-}); */
+/* app.get("/hi", (request, response) => {
+    response.send("Hello world!");
+});  */
+app.use('/test', function (req,res) {
+    //res.render('EJS/test')
+    response.send("Hello world!");
+});
+
+
+
 
 exports.app = functions.https.onRequest(app);
 
