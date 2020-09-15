@@ -9,15 +9,14 @@ admin.initializeApp();
 
 const db = admin.firestore();
 
-app.get("/about", (request, response) => {
-    //.collection
-    //return response.
-    functions.logger.info("Hello logs!", {structuredData: true});
+app.get("/hello", (request, response) => {
     response.send("Hello world!");
+}); 
+
+exports.hello= functions.https.onRequest((req, res) => {
+    response.send("Hello from Medium!");
 });
-
-
-exports.api = functions.https.onRequest(app);
+exports.app = functions.https.onRequest(app);
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions

@@ -17,9 +17,10 @@
       "**/node_modules/**"
     ],
     "rewrites": [
+      
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/hello",
+        "destination": "/hello.html"
       }
     ]
   }
