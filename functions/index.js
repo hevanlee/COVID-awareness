@@ -13,9 +13,10 @@ app.get("/hello", (request, response) => {
     response.send("Hello world!");
 }); 
 
-exports.hello= functions.https.onRequest((req, res) => {
+/* exports.hello= functions.https.onRequest((req, res) => {
     response.send("Hello from Medium!");
-});
+}); */
+
 exports.app = functions.https.onRequest(app);
 
 // // Create and Deploy Your First Cloud Functions
