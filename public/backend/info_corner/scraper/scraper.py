@@ -24,6 +24,7 @@ class HotspotScraper(scrapy.Spider):
         hotspots = {
             "New South Wales": [],
             "Victoria": [],
+            "Queensland": [],
             "Australian Capital Territory": [],
             "South Australia": [],
             "Western Australia": [],
