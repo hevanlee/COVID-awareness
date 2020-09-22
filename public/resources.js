@@ -23,9 +23,18 @@ $.getJSON("./backend/info_corner/scraper/hotspots.json", function(hotspots) {
 
         let hotspots_div = document.getElementById("hotspots_container");
         let update_div = document.getElementById("Last updated");
-        let date_string = document.createElement("p");
-        date_string.innerHTML = `Last updated: ${hotspots["Last updated"]}`;
-        update_div.appendChild(date_string);
+        let update_msg = document.createElement("p");
+        update_msg.innerHTML = `Last updated at ${hotspots["Last updated"]} from `;
+
+        let url = document.createElement("a");
+        let url_text = document.createTextNode("https://www.qld.gov.au/health/conditions/health-alerts/coronavirus-covid-19/current-status/hotspots-covid-19");
+        url.appendChild(url_text);
+        url.href = "https://www.qld.gov.au/health/conditions/health-alerts/coronavirus-covid-19/current-status/hotspots-covid-19";
+        
+        update_msg.appendChild(url);
+
+        update_div.appendChild(update_msg);
+
         hotspots_div.appendChild(update_div);
     }
     
