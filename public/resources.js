@@ -40,7 +40,6 @@ $.getJSON("./backend/info_corner/scraper/hotspots.json", function(hotspots) {
     
     function generateStateTable(state_dict, state_id) {
         let div_container = document.getElementById(state_id);
-        console.log(state_id);
     
         if (state_dict.length == 0) {
             let message = document.createElement("p");
