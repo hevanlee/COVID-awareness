@@ -14,6 +14,7 @@
 
 import scrapy
 import json
+from datetime import datetime
 
 class HotspotScraper(scrapy.Spider):
     name = "hotspot_spider"
@@ -29,7 +30,7 @@ class HotspotScraper(scrapy.Spider):
             "South Australia": [],
             "Western Australia": [],
             "Northern Territory": [],
-            "Tasmania": []
+            "Tasmania": [],
         }
 
         table = response.xpath('//table[@id="table20116"]//tbody')
@@ -67,6 +68,10 @@ class HotspotScraper(scrapy.Spider):
                             break
             else:
                 continue
+        
+        now = datetime.now()
+        date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+        hotspots["Last updated"] = date_time
 
-        with open("backend/info_corner/scraper/hotspots.json", 'w') as outfile:
+        with open("hotspots.json", 'w') as outfile:
             json.dump(hotspots, outfile, ensure_ascii = False)
