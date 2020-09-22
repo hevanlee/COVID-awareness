@@ -16,19 +16,27 @@ $.getJSON("./backend/info_corner/scraper/hotspots.json", function(hotspots) {
     
     function generateAllTables() {
         for (let key of Object.keys(hotspots)) {
-            generateStateTable(hotspots[key], key);
+            if (key != "Last updated") {
+                generateStateTable(hotspots[key], key);
+            }
         }
+
+        let hotspots_div = document.getElementById("hotspots_container");
+        let update_div = document.getElementById("Last updated");
+        let date_string = document.createElement("p");
+        date_string.innerHTML = `Last updated: ${hotspots["Last updated"]}`;
+        update_div.appendChild(date_string);
+        hotspots_div.appendChild(update_div);
     }
     
     function generateStateTable(state_dict, state_id) {
-        let divContainer = document.getElementById(state_id);
-        // divContainer.innerHTML = "";
+        let div_container = document.getElementById(state_id);
         console.log(state_id);
     
         if (state_dict.length == 0) {
             let message = document.createElement("p");
             message.innerHTML = "No current declared hotspots.";
-            divContainer.appendChild(message);
+            div_container.appendChild(message);
     
         } else {
             // generate table
@@ -72,7 +80,7 @@ $.getJSON("./backend/info_corner/scraper/hotspots.json", function(hotspots) {
             table.appendChild(t_body);
     
             // Add table to the div container
-            divContainer.appendChild(table);
+            div_container.appendChild(table);
         }
     }
 
