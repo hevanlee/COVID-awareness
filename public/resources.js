@@ -12,6 +12,13 @@ hotspots.json format:
 */
 
 let hotspots = require('../backend/info_corner/scraper/hotspots.json')
+console.log(Object.keys(hotspots));
+
+function generateAllTables() {
+    for (key in Object.keys(hotspots)) {
+        generateStateTable(hotspots[key], key);
+    }
+}
 
 function generateStateTable(state_dict, state_id) {
     let divContainer = document.getElementById(state_id);
