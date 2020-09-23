@@ -69,6 +69,9 @@ class HotspotScraper(scrapy.Spider):
             else:
                 continue
         
+        for state in hotspots.keys():
+            hotspots[state] = sorted(hotspots[state], key=lambda k: k["suburb"]) 
+
         now = datetime.now()
         date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
         hotspots["Last updated"] = date_time
