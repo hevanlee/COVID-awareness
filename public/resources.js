@@ -60,7 +60,7 @@ $.getJSON("./backend/info_corner/scraper/hotspots.json", function(hotspots) {
             let headings = ["Suburb", "Date Declared", "Time Declared"]
             for (let i = 0; i < 3; i++) {
                 let th = document.createElement("th");
-                th.innerHTML = headings[i];
+                th.innerHTML = headings[i].bold();
                 h_row.appendChild(th);
             }
             t_head.appendChild(h_row);
