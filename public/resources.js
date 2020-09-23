@@ -42,37 +42,29 @@ $.getJSON("./backend/info_corner/scraper/hotspots.json", function(hotspots) {
         let div_container = document.getElementById(state_id);
     
         if (state_dict.length == 0) {
-            //let no_hotspot = document.createElement("table");
+            let no_hotspot = document.createElement("table");
             //no_hotspot.style.textAlign='left';
-            //let nh_head = document.createElement("thead");
-            //let nh_row = document.createElement("tr");
+            let nh_head = document.createElement("thead");
+            let nh_row = document.createElement("tr");
             
-            let message = document.createElement("p");
-            //let message = document.createElement("td");
-            message.innerHTML = "has no current declared hotspots.";
-            //message.style.textAlign='left';
-            //message.style.paddingLeft='50px';
-            //nh_row.appendChild(message);
+            //let message = document.createElement("p");
+            let message = document.createElement("td");
+            message.innerHTML = "No current declared hotspots.";
+            message.style.textAlign='left';
+            message.style.width='500px';
+            message.style.paddingLeft='30px';
+            nh_row.appendChild(message);
             //div_container
-
-            
-            /* for (let i = 0; i < 1; i++) {
-                let th = document.createElement("th");
-                th.innerHTML = "                          ";
-                nh_row.appendChild(th);
-            } */
-
-
-            //nh_head.appendChild(nh_row);
+            nh_head.appendChild(nh_row);
 
             //let empty_message = document.createElement("td");
             //empty_message.innerHTML = "";
 
             
-            //no_hotspot.appendChild(nh_row);
+            no_hotspot.appendChild(nh_row);
             
-            //iv_container.appendChild(no_hotspot);
-            div_container.appendChild(message);
+            div_container.appendChild(no_hotspot);
+            //div_container.appendChild(message);
     
         } else {
             // generate table
